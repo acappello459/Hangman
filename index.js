@@ -4,16 +4,17 @@
 var body = document.getElementsByTagName('body')[0];
 var input = document.getElementById('input');
 var enter = document.getElementById('enter');
-var usedLetter = document.getElementById('usedLetters')
-var newGame = document.getElementById('newGame')
-// var alert = document.createElement('alert');
+var usedLetter = document.getElementById('usedLetters');
+var newGame = document.getElementById('newGame');
+var picture = document.getElementById('picture');
+var hint = document.getElementById('hint')
 
 // window.addEventListener('load', alert('Would you like to play a game'))
 
 
 
 class Word{
-  constructor(word, hint){
+  constructor(word, hint, photo){
     this.word = word;
     this.hint = hint;
   }
@@ -32,7 +33,7 @@ class WordList{
   // }
 }
 
-var word1 = new Word("NEW YORK YANKEES", "SPORTS TEAM");
+var word1 = new Word("NEW YORK YANKEES", "SPORTS TEAM", );
 var word2 = new Word("ALBANY", "STATE CAPITAL");
 var word3 = new Word("ABRAHAM LINCOLN", "US PRESIDENT");
 var word4 = new Word("BUENOS AIRES", "WORLD CAPITAL");
@@ -61,7 +62,8 @@ var randomWord = a.wordArray[randomNumber].word;
 var randomHint = a.wordArray[randomNumber].hint;
 var usedLetters = [];
 var remainingLetters = randomWord.length;
-var counter = 5;
+var counter = 0;
+// var images = [hangman0.png, hangman1.png, hangman2.png, hangman3.png, hangman4.png, hangman5.png, hangman6.png ]
 
 function startGame(){
   console.log(randomWord)
@@ -75,35 +77,45 @@ function startGame(){
     brick.style.height = '100px';
     brick.style.border = "2px solid"
     brick.style.display = "inline-block";
-    brick.style.marginLeft = '5px'
+    brick.style.margin = '5px 5px'
     brick.style.overflow = 'hidden'
     body.appendChild(brick)
 
   if(randomWord[i] == ' '){
     brick.style.border = ''
+    remainingLetters--;
   }
 }
 }
 
 function checkLetter(){
+  var result = false;
+  if(input.value )
   for(let i=0; i<randomWord.length;i++){
     if(input.value.toUpperCase() == randomWord[i]){
       document.getElementById('brick'+[i]).innerHTML = randomWord[i]
       document.getElementById('brick'+[i]).style.fontSize = '2em'
       document.getElementById('brick'+[i]).style.textAlign = 'center'
       remainingLetters--;
+      result = true;
       // console.log(remainingLetters)
       // document.getElementById('brick'+[i]).style.padding = '10px auto'
-    }
-    }
+        }
+      }
+      if(result == false){
+        counter++;
+        picture.style.backgroundImage = "url("+"stylesheets/images/hangman"+[counter]+".png"+")"
+        console.log(counter);
+      }
     if(remainingLetters === 0){
       alert("congratulations you win!");
   }
-  counter--;
-  console.log(counter)
+
+
   usedLetters.push(input.value)
   usedLetter.innerHTML += input.value
 }
+
 
 newGame.addEventListener('click', startGame);
 newGame.addEventListener('click',function display(){
