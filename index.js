@@ -66,6 +66,8 @@ var counter = 0;
 // var images = [hangman0.png, hangman1.png, hangman2.png, hangman3.png, hangman4.png, hangman5.png, hangman6.png ]
 
 function startGame(){
+  // let randomHint1 = randomHint
+  // let randomWord1 = randomWord
   console.log(randomWord)
   console.log(randomHint)
   // var wordSplit = randomWord.split('')
@@ -90,7 +92,11 @@ function startGame(){
 
 function checkLetter(){
   var result = false;
-  if(input.value )
+  if(input.value.length != 1){
+    alert("You can only enter one letter at a time you dingus!")
+    result = true;
+  }else{
+    console.log(input.value)
   for(let i=0; i<randomWord.length;i++){
     if(input.value.toUpperCase() == randomWord[i]){
       document.getElementById('brick'+[i]).innerHTML = randomWord[i]
@@ -102,18 +108,25 @@ function checkLetter(){
       // document.getElementById('brick'+[i]).style.padding = '10px auto'
         }
       }
+    }
       if(result == false){
         counter++;
         picture.style.backgroundImage = "url("+"stylesheets/images/hangman"+[counter]+".png"+")"
         console.log(counter);
       }
     if(remainingLetters === 0){
-      alert("congratulations you win!");
+      // document.getElementById('brick'+[i]).innerHTML = randomWord[i];
+      let youWin = confirm("Congratulations you won! If you would like to play again please hit OK!");
+      if(youWin == true){
+        document.location.reload()
+        startGame()
+      }
   }
 
-
+  if(input.value.length == 1){
   usedLetters.push(input.value)
   usedLetter.innerHTML += input.value
+}
 }
 
 

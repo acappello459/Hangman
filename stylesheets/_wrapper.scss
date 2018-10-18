@@ -85,12 +85,12 @@
   width: 100px;
   font-size: 1.5em;
   text-align: center;
-  
+  overflow: hidden;
 }
 
 #picture{
-  height: 300px;
-  width: 200px;
+  height: 400px;
+  width: 300px;
   border: 2px solid;
   background-image: url('/home/acapp459/Desktop/JS/capstone/stylesheets/images/hangman0.png');
   background-size: 100% 100%;
