@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
+    <meta name='viewport' charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
     <div class="wrapper">
       <input type="text" id="input" placeholder="Guess a Letter">
+      <button type="button" id='newGame' name="button">START GAME</button>
       <button type="submit" id='enter' name="button">ENTER</button>
-      <button type="button" id='hint' name="button">HINT</button>
-      <button type="button" id='newGame' name="button">NEW GAME</button>
-      <div id="usedLetters"></div>
+      <button type="button" id='hintButton' name="button">HINT</button>
+      <div id="guessWord"></div>
+      <div id="hint"></div>
+      <div id="wrongLetters">WRONG LETTERS</div>
       <div id='picture'></div>
       <!-- <div id="word"></div>
       <div id="hint">
