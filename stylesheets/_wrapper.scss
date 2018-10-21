@@ -71,7 +71,7 @@ background-repeat: repeat-y;
 #guessWord{
   width: 100%;
   height: 100%;
-  margin-left: 15%;
+  // margin-left: 15%;
   grid-column: 1/6;
   grid-row: 2/4;
 // background: $main-background;
@@ -80,7 +80,7 @@ background-repeat: repeat-y;
 #wrongLetters{
   height: 10vh;
   width: 100%;
-  margin:10% 10%;
+  // margin:10% 10%;
   border: 2px solid;
   font-size: 2vh;
   text-align: center;
