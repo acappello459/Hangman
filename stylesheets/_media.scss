@@ -1,4 +1,4 @@
-@media all and (max-width: 1400px){
+@media screen and (max-width: 1400px){
 .wrapper{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -19,7 +19,7 @@
   #picture{
     grid-column: 1/5;
     grid-row: 2/3;
-    height: 500px;
+    height: 50vh;
   }
   #guessWord{
     grid-column: 2/5;
@@ -32,8 +32,9 @@
     font-size: 1.5vh;
     grid-row: 3/4;
   }
-  #picture{
 
-  }
+}
+
+@media screen and (max-width: 700px){
 
 }

@@ -4,14 +4,13 @@
 var body = document.getElementsByTagName('body')[0];
 var input = document.getElementById('input');
 var enter = document.getElementById('enter');
-var wrongLetter = document.getElementById('wrongLetters');
+var wrongLetter = document.getElementById('wrongLetters')
 var newGame = document.getElementById('newGame');
 var picture = document.getElementById('picture');
 var hintButton = document.getElementById('hintButton')
 var guessWord = document.getElementById('guessWord')
 var hint = document.getElementById('hint')
 
-// window.addEventListener('load', alert('Would you like to play a game'))
 
 
 
@@ -66,24 +65,21 @@ var wrongLetters = [];
 var rightLetters = [];
 var remainingLetters = randomWord.length;
 var counter = 0;
-// var images = [hangman0.png, hangman1.png, hangman2.png, hangman3.png, hangman4.png, hangman5.png, hangman6.png ]
+
 
 function startGame(){
-  // let randomHint1 = randomHint
-  // let randomWord1 = randomWord
+
   console.log(randomWord)
   console.log(randomHint)
-  // var wordSplit = randomWord.split('')
-  // console.log(wordSplit)
+
   for(let i=0; i<randomWord.length;i++){
     var brick = document.createElement('div')
     brick.id = 'brick' + [i]
-    brick.style.width = '7.5%';
-    brick.style.height = '100px';
+    brick.style.width = '8%';
+    brick.style.height = '8vh';
     brick.style.border = "2px solid"
     brick.style.display = "inline-block";
     brick.style.margin = '5px 5px'
-    // brick.style.padding = '50px'
     brick.style.overflow = 'hidden'
     brick.style.textAlign = 'center'
     guessWord.appendChild(brick)
@@ -104,18 +100,17 @@ function checkLetter(){
   }else if(input.value.length == 0){
     alert("You didnt enter in a letter you dingus!")
   }else{
-    // console.log(input.value)
+
   for(let i=0; i<randomWord.length;i++){
     if(input.value.toUpperCase() == randomWord[i]){
       document.getElementById('brick'+[i]).innerHTML = randomWord[i]
-      document.getElementById('brick'+[i]).style.fontSize = '2vh'
+      document.getElementById('brick'+[i]).style.fontSize = '7vh'
       document.getElementById('brick'+[i]).style.textAlign = 'center'
       document.getElementById('brick'+[i]).style.backgroundColor = 'lightGreen'
       if(rightLetters.includes(input.value) == false){
         remainingLetters--;
       }
       result = true;
-      // console.log(remainingLetters)
 
         }
       }
@@ -123,16 +118,11 @@ function checkLetter(){
     if(result == true){
       if(rightLetters.includes(input.value)){
         alert("You've already guessed that letter you dingus!")
-        // remainingLetters++;
       }else{
         rightLetters.push(input.value)
       }
     }
-      //
-      // if(result == false){
-      //   counter++;
-      //   console.log(counter);
-      // }
+
     if(remainingLetters === 0){
       setTimeout(function(){
         if(confirm("Congratulations you guessed "+[randomWord]+" correctly! If you would like to play again please hit OK!")){
@@ -147,7 +137,7 @@ function checkLetter(){
         alert("You've already guessed that letter you dingus!")
       }else{
         counter++
-        wrongLetters.push(input.value)
+        wrongLetters.push(input.value.toUpperCase())
         wrongLetter.innerHTML = wrongLetters
         wrongLetter.style.textAlign = 'center'
         picture.style.backgroundImage = "url("+"stylesheets/images/hangman"+[counter]+".png"+")"
@@ -186,7 +176,6 @@ enter.addEventListener('click', function(){
 })
 
 hintButton.addEventListener('click', function(){
- // var hint = document.createElement('div');
  hint.value = ''
  hint.id = 'hint';
  hint.style.height = '60px';
