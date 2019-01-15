@@ -52,7 +52,7 @@ background-repeat: repeat-y;
   grid-row: 2/4;
   grid-column: 1/7;
   margin: auto auto;
-  font-size: 4em;
+  font-size: 2em;
   text-align: center;
   overflow: hidden;
   border-radius: 75%;
@@ -76,8 +76,8 @@ background-repeat: repeat-y;
 
 #wrongLetters{
   height: 10vh;
-  width: 100%;
-  margin:10% 10%;
+  width: 90%;
+  margin: auto auto;
   border: 2px solid;
   font-size: 2vh;
   text-align: center;

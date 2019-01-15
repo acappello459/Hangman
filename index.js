@@ -1,6 +1,4 @@
-// var arrayOfWords = ["New York Yankees","Albany", "Abraham Lincoln", "Buenos Aires", "Statue of Liberty", "Jukebox",,"Michael Jordan", "Van Halen", "Spongebob Squarepants", "The Godfather"]
-// var arrayOfHints = ["Sports Team", "State Capitol","US President", "World Capitol", "US Landmark", "1950's Pop Culture", "Sports Legend", "Bands of the 80's", "Kid's TV Show", "Movie Title" ]
-//
+
 var body = document.getElementsByTagName('body')[0];
 var input = document.getElementById('input');
 var enter = document.getElementById('enter');
@@ -10,12 +8,19 @@ var picture = document.getElementById('picture');
 var hintButton = document.getElementById('hintButton')
 var guessWord = document.getElementById('guessWord')
 var hint = document.getElementById('hint')
+var numbers = ['1','2','3','4','5','6','7','8','9','0']
+var letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
-
-
+var x = window.matchMedia("(max-width: 900px)")
+var y = window.matchMedia("(max-width: 400px)")
+input.style.display = 'none';
+enter.style.display = 'none';
+hintButton.style.display = 'none';
+wrongLetter.style.display = 'none';
+picture.style.display = 'none';
 
 class Word{
-  constructor(word, hint, photo){
+  constructor(word, hint){
     this.word = word;
     this.hint = hint;
   }
@@ -74,9 +79,17 @@ function startGame(){
 
   for(let i=0; i<randomWord.length;i++){
     var brick = document.createElement('div')
-    brick.id = 'brick' + [i]
-    brick.style.width = '8%';
-    brick.style.height = '8vh';
+    brick.id = 'brick' + [i];
+    if(y.matches){
+      brick.style.width = "4%"
+      brick.style.height = "3vh"
+    } else if(x.matches){
+      brick.style.width = "7%"
+      brick.style.height = "5vh"
+    } else{
+      brick.style.width = '8%';
+      brick.style.height = '8vh';
+    }
     brick.style.border = "2px solid"
     brick.style.display = "inline-block";
     brick.style.margin = '5px 5px'
@@ -99,12 +112,21 @@ function checkLetter(){
     result = true;
   }else if(input.value.length == 0){
     alert("You didnt enter in a letter you dingus!")
-  }else{
-
-  for(let i=0; i<randomWord.length;i++){
+  }else if(numbers.includes(input.value)){
+    alert("You can only enter letters")
+  } else if(!letters.includes(input.value)){
+    alert("Please enter in a valid letter")
+  } else {
+    for(let i=0; i<randomWord.length;i++){
     if(input.value.toUpperCase() == randomWord[i]){
       document.getElementById('brick'+[i]).innerHTML = randomWord[i]
-      document.getElementById('brick'+[i]).style.fontSize = '7vh'
+      if(y.matches){
+        document.getElementById('brick'+[i]).style.fontSize = '1.5em'
+      } else if(x.matches){
+        document.getElementById('brick'+[i]).style.fontSize = '4vh'
+      } else{
+        document.getElementById('brick'+[i]).style.fontSize = '7vh'
+      }
       document.getElementById('brick'+[i]).style.textAlign = 'center'
       document.getElementById('brick'+[i]).style.backgroundColor = 'lightGreen'
       if(rightLetters.includes(input.value) == false){
@@ -116,10 +138,10 @@ function checkLetter(){
       }
     }
     if(result == true){
-      if(rightLetters.includes(input.value)){
+      if(rightLetters.includes(input.value.toUpperCase())){
         alert("You've already guessed that letter you dingus!")
       }else{
-        rightLetters.push(input.value)
+        rightLetters.push(input.value.toUpperCase())
       }
     }
 
@@ -128,13 +150,15 @@ function checkLetter(){
         if(confirm("Congratulations you guessed "+[randomWord]+" correctly! If you would like to play again please hit OK!")){
           location.reload();
         }
-      }, 500);
+      }, 200);
   }
 
-    if(result==false && input.value.length == 1){
+    if(result == false && input.value.length == 1){
       console.log(counter)
-      if(wrongLetters.includes(input.value)){
+      if(wrongLetters.includes(input.value.toUpperCase())){
         alert("You've already guessed that letter you dingus!")
+      } else if(numbers.includes(input.value) || !letters.includes(input.value)){
+        console.log("You can only enter letters")
       }else{
         counter++
         wrongLetters.push(input.value.toUpperCase())
@@ -148,7 +172,7 @@ function checkLetter(){
       if(confirm("BOOOOOOOOOOOOO!"+" You couldn't even guess " + [randomWord]+" correctly!"+ " If you would like to play again please hit OK!")){
         location.reload()
       }
-    }, 500);
+    }, 200);
 
 
 }
@@ -171,7 +195,6 @@ input.addEventListener("keyup", function(event) {
 //event listener that enters the guessed letter if the user clicks the button instead of pressing enter
 enter.addEventListener('click', checkLetter)
 enter.addEventListener('click', function(){
-  console.log('butt')
   input.value = ''
 })
 
@@ -189,4 +212,9 @@ hintButton.addEventListener('click', function(){
 newGame.addEventListener('click', startGame);
 newGame.addEventListener('click',function display(){
   newGame.style.display = 'none'
+  input.style.display = ''
+  enter.style.display = ''
+  hintButton.style.display = ''
+  wrongLetter.style.display = ''
+  picture.style.display = ''
 })
