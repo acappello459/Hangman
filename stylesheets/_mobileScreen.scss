@@ -3,21 +3,39 @@
 .wrapper{
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: 1fr 2fr 3fr;
+  grid-template-rows: 1fr 2fr 2fr;
   width: 100%;
 }
 
 #input{
   grid-column: 1/2;
+  font-size: 3vh;
 }
 
 #enter{
+  font-size: 3vh;
   grid-column: 2/3;
 }
 #hintButton {
+font-size: 3vh;
   grid-column: 3/4;
 }
+#newGame{
+  height: 25vh;
+  width: 25%;
+  grid-row: 2/4;
+  grid-column: 1/7;
+  margin: auto auto;
+  font-size: 4vh;
+  text-align: center;
+  overflow: hidden;
+  // border-radius: 50%;
+  z-index: 3;
+  position: relative;
+  // left: 300px;
+  // background: $main-background;
 
+}
 #picture{
   grid-column: 1/2;
   width: 50%;
@@ -26,15 +44,15 @@
 }
 
 #guessWord{
-  grid-column: 1/3;
-  width: 85%;
-  margin-left: 10px;
+  grid-column: 1/4;
+  width: 100%;
+  margin: auto;
 }
 #wrongLetters{
-  font-size: 1.5vh;
+  font-size: 3vh;
   grid-column: 2/4;
   grid-row: 2/3;
-  margin: auto auto;
+  margin: 10px auto;
 }
 
 

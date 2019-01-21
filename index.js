@@ -81,7 +81,7 @@ function startGame(){
     var brick = document.createElement('div')
     brick.id = 'brick' + [i];
     if(y.matches){
-      brick.style.width = "4%"
+      brick.style.width = "4.5%"
       brick.style.height = "3vh"
     } else if(x.matches){
       brick.style.width = "7%"
@@ -114,14 +114,14 @@ function checkLetter(){
     alert("You didnt enter in a letter you dingus!")
   }else if(numbers.includes(input.value)){
     alert("You can only enter letters")
-  } else if(!letters.includes(input.value)){
+  } else if(!letters.includes(input.value.toLowerCase())){
     alert("Please enter in a valid letter")
   } else {
     for(let i=0; i<randomWord.length;i++){
     if(input.value.toUpperCase() == randomWord[i]){
       document.getElementById('brick'+[i]).innerHTML = randomWord[i]
       if(y.matches){
-        document.getElementById('brick'+[i]).style.fontSize = '1.5em'
+        document.getElementById('brick'+[i]).style.fontSize = '1em'
       } else if(x.matches){
         document.getElementById('brick'+[i]).style.fontSize = '4vh'
       } else{
@@ -157,7 +157,7 @@ function checkLetter(){
       console.log(counter)
       if(wrongLetters.includes(input.value.toUpperCase())){
         alert("You've already guessed that letter you dingus!")
-      } else if(numbers.includes(input.value) || !letters.includes(input.value)){
+      } else if(numbers.includes(input.value) || !letters.includes(input.value.toLowerCase())){
         console.log("You can only enter letters")
       }else{
         counter++
