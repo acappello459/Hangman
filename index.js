@@ -49,6 +49,16 @@ var word7 = new Word("MICHAEL JORDAN", "SPORTS LEGEND");
 var word8 = new Word("VAN HALEN", "BANDS OF THE 80'S");
 var word9 = new Word("SPONGEBOB SQUAREPANTS", "KID'S TV SHOW");
 var word10 = new Word("THE GODFATHER", "MOVIE TITLE");
+var word11 = new Word("MICROSOFT", "TECH COMPANY");
+var word12 = new Word("BAGPIPES", "MUSICAL INSTRUMENT");
+var word13 = new Word("BABY RUTH", "CANDY BAR");
+var word14 = new Word("MACARONI AND CHEESE", "ESSENTIAL FOOD GROUP");
+var word15 = new Word("DISNEY WORLD", "AMUSEMENT PARK");
+var word16 = new Word("ROTTWEILER", "BREED OF DOG");
+var word17 = new Word("HARRY POTTER", "BOOK SERIES");
+var word18 = new Word("LOS ANGELES RAMS", "SPORTS TEAM");
+var word19 = new Word("NIAGARA FALLS", "NATURAL WONDER OF THE WORLD");
+var word20 = new Word("CALL OF DUTY", "POPULAR VIDEO GAME");
 
 var a = new WordList()
 a.addWords(word1)
@@ -61,6 +71,16 @@ a.addWords(word7)
 a.addWords(word8)
 a.addWords(word9)
 a.addWords(word10)
+a.addWords(word11)
+a.addWords(word12)
+a.addWords(word13)
+a.addWords(word14)
+a.addWords(word15)
+a.addWords(word16)
+a.addWords(word17)
+a.addWords(word18)
+a.addWords(word19)
+a.addWords(word20)
 
 
 var randomNumber = Math.floor(Math.random()*a.wordArray.length);
