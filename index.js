@@ -149,7 +149,7 @@ function checkLetter(){
       }
       document.getElementById('brick'+[i]).style.textAlign = 'center'
       document.getElementById('brick'+[i]).style.backgroundColor = 'lightGreen'
-      if(rightLetters.includes(input.value) == false){
+      if(rightLetters.includes(input.value.toUpperCase()) == false){
         remainingLetters--;
       }
       result = true;
